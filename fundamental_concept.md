@@ -65,3 +65,6 @@ __Namespacing__
 - `minikube pause`
 - `minikube delete`
 
+## Questions that might be helpful in the future to look into
+- deeper dive into config files
+- maybe some notes on how to read documentation, if there is anything worth noting
