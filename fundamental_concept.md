@@ -3,18 +3,40 @@
 
 ## Basic kubernetes components mental model
 
+Kubernetes basic architectures is made of
+- master node
+  - runs several process to run the process properly
+    - api server - the entry point to the k8s cluster
+    - controller manager - keeps track of whats happening in the cluster
+    - scheduler - decides on which worker node each container should be scheduled on
+    - etc - key value storage (k8s backing store) - hold the current state (data)
+  - doesnt' need as many resources
+  - must have backup of master because we can't access our app anymore if there is no master
+- a couple of worker nodes running kubelet on it
+  - each node will have several applications deployed on it
+  - higher workload
+- virtual network
+
+
+Tools that we use when using k8s?
 - kubectl
   - the "controller"
   - analogy: the president that gives instructions to the general(master node) that gives instructions to the soldiers(Worker Node)
 - minikube
   - for testing k8s locally
   - everything is in a single node? TODO
-- Master Node
-  - have 4 componenets: apiServer, etcd (the brain / data), TODO , TODO
-- Worker Node
-  - the nodes that will hold pods
-  - can contain multiple pods
 
+Components
+- Pod
+- Service
+- Ingress
+- ConfigMap
+- Secret
+- Deployment
+- StatefulSet
+- DaemonSet
+
+Some explanations of componenets
 - Pods
   - an abstraction over containers which contains the apps etc
   - we don't need to create pods manually, k8s will handle it
@@ -29,10 +51,9 @@
   - pods are ephemeral, therefore the IP will change again and again when they go down
   - to make the IPs static, we use service
 
-### Common services
+### Commonly used services
 - LoadBalancer
 - NodePort
-- TODO
 
 - nginx ingress (for loadbalancing)
   - ingress resource needs to be paired with ingress controller.
