@@ -14,9 +14,10 @@
 - Application data is not stored in it.
 
 
-
 ### How to backup etcd and restore?
-
+- use etcdctl
+- install etc-client
+-
 
 
 ### How to access a cluster using REST api with kubectl proxy
