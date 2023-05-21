@@ -15,10 +15,17 @@ Kubernetes basic architectures is made of
 
 #### Master Node components
 
-- api server - the entry point to the k8s cluster. Public API, everything goes through here. The other components of master node can commnuicate privately with the API server.
-- controller manager - keeps track of whats happening in the cluster, when pods die, it re-schedules for it to be re-instated
-- scheduler - decides on which worker node each container should be scheduled on
-- etcd - key value storage (k8s backing store) - hold the current state (data). It is the brain of the kubernetes cluster
+- API server
+  - the entry point to the k8s cluster. Public API, everything goes through here.
+  - The other components of master node can commnuicate privately with the API server.
+  - we can communicate with the API server via k8s dahsboard, CLI or REST API(?)
+- controller manager
+  - keeps track of whats happening in the cluster
+  - e.g when pods die, it re-schedules for it to be re-instated
+- scheduler
+  - decides on which worker node each container should be scheduled on
+- etcd
+  - key value storage (k8s backing store) - hold the current state (data). It is the brain of the kubernetes cluster
 
 #### Worker Node components
 - kubelet - communicates with the master node. the one doing the actual work of starting the node based on what master node tells it to do.
