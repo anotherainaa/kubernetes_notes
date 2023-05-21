@@ -6,10 +6,6 @@
 Kubernetes basic architectures is made of
 - master node
   - runs several process to run the process properly
-    - api server - the entry point to the k8s cluster
-    - controller manager - keeps track of whats happening in the cluster
-    - scheduler - decides on which worker node each container should be scheduled on
-    - etc - key value storage (k8s backing store) - hold the current state (data)
   - doesnt' need as many resources
   - must have backup of master because we can't access our app anymore if there is no master
 - a couple of worker nodes running kubelet on it
@@ -17,8 +13,19 @@ Kubernetes basic architectures is made of
   - higher workload
 - virtual network
 
+#### Master Node components
 
-Tools that we use when using k8s?
+- api server - the entry point to the k8s cluster. Public API, everything goes through here. The other components of master node can commnuicate privately with the API server.
+- controller manager - keeps track of whats happening in the cluster, when pods die, it re-schedules for it to be re-instated
+- scheduler - decides on which worker node each container should be scheduled on
+- etcd - key value storage (k8s backing store) - hold the current state (data). It is the brain of the kubernetes cluster
+
+#### Worker Node components
+- kubelet - communicates with the master node. the one doing the actual work of starting the node based on what master node tells it to do.
+- kube-proxy - handles forwarding. e.g Makes sure that application is talking to the replica in the same node, instead of another node.
+- container runtime - most common being container d
+
+#### Tools that we use when using k8s?
 - kubectl
   - the "controller"
   - analogy: the president that gives instructions to the general(master node) that gives instructions to the soldiers(Worker Node)
@@ -26,7 +33,7 @@ Tools that we use when using k8s?
   - for testing k8s locally
   - everything is in a single node? TODO
 
-Components
+#### Components
 - Pod
 - Service
 - Ingress
@@ -36,7 +43,7 @@ Components
 - StatefulSet
 - DaemonSet
 
-Some explanations of componenets
+#### Some explanations of componenets
 - Pods
   - an abstraction over containers which contains the apps etc
   - we don't need to create pods manually, k8s will handle it
